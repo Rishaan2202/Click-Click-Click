@@ -1,14 +1,20 @@
 import { getDatabase } from "@/lib/mongodb";
 import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
 
 export async function GET(request: Request) {
+
     const db = await getDatabase();
+    const cookieStore = await cookies();
+
     const { searchParams } = new URL(request.url);
     const code: string | null = searchParams.get("code");
     const error: string | null = searchParams.get("error");
 
     if (!code || error) {
+
         return NextResponse.json({ error: "Missing code parameter" }, { status: 400 });
+    
     }
 
     try {
@@ -29,20 +35,57 @@ export async function GET(request: Request) {
 
         const response: Object = await tockenResponse.json();
 
-        return NextResponse.json({ message: "Successfully exchanged code for access token", data: response }, { status: 200 });
-        // if (!tockenResponse.ok) {
-        //     return NextResponse.json({ error: "Failed to exchange code for access token" }, { status: 500 });
-        // } else {
-        //     const accessToken: string = (response as any).access_token;
-        //     const userInfo = await fetch("https://auth.hackclub.com/api/v1/me", {
-        //         method: "GET",
-        //         headers: {
-        //             'Authorization': `Bearer ${accessToken}`
-        //         }
-        //     });
-        // }
+        if (!tockenResponse.ok) {
+
+            return NextResponse.json({ error: "Failed to exchange code for access token" }, { status: 500 });
+        
+        } else {
+
+            const accessToken: string = (response as any).access_token;
+
+            const userInfo = await fetch("https://auth.hackclub.com/api/v1/me", {
+                method: "GET",
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`
+                }
+            });
+
+            const userData = await userInfo.json();
+
+            if (!userInfo.ok) {
+
+                return NextResponse.json({ error: "Failed to fetch user data" }, { status: 500 });
+            
+            } else {
+
+                const slackInfo = fetch(`https://slack.com/api/users.info?user=${userData.identity.slack_id}`, {
+                    method: "GET",
+                    headers: {
+                        'Authorization': `Bearer ${process.env.SLACK_ACCESS_TOKEN}`
+                    }
+                });
+
+                const slackData = await (await slackInfo).json();
+
+                if (!slackData.ok) {
+
+                    return NextResponse.json({ error: "Failed to fetch slack user data" }, { status: 500 });
+                
+                } else {
+
+                    console.error("Failed to fetch slack user data:", slackData);
+                    cookieStore.set("name", userData.identity.name, { maxAge: 60 * 60 * 24, path: "/" });
+                    cookieStore.set("pfp", slackData.profile.image_original, { maxAge: 60 * 60 * 24, path: "/" });
+                    cookieStore.set("status_text", slackData.profile.status_text, { maxAge: 60 * 60 * 24, path: "/" });
+                    
+                    return NextResponse.json({ message: "Successfully fetched slack data", data: slackData }, { status: 200 });
+                }
+            }
+        }
 
     } catch (error) {
+
         return NextResponse.json({ error: "Failed to exchange code for access token" }, { status: 500 });
+    
     }
 }
