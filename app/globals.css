@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+:root {
+  --eggshell: #F4F1DE;
+  --burnt-peach: #E07A5F;
+  --twilight-indigo: #3D405B;
+  --muted-teal: #81B29A;
+  --apricot-cream: #F2CC8F;
+}
+
+body {
+  background: var(--eggshell);
+  color: var(--twilight-indigo);
+  font-family: Arial, Helvetica, sans-serif;
+}
