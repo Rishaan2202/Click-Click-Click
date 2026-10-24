@@ -14,7 +14,7 @@ export async function GET(request: Request) {
     if (!code || error) {
 
         return NextResponse.json({ error: "Missing code parameter" }, { status: 400 });
-    
+
     }
 
     try {
@@ -27,7 +27,7 @@ export async function GET(request: Request) {
             body: JSON.stringify({
                 "client_id": process.env.NEXT_PUBLIC_HACKCLUB_CLIENT_ID,
                 "client_secret": process.env.HACKCLUB_CLIENT_SECRET,
-                "redirect_uri": process.env.NEXT_PUBLIC_REDIRECT_URI, // Needs change while production
+                "redirect_uri": process.env.NEXT_PUBLIC_REDIRECT_URI,
                 "code": code,
                 "grant_type": "authorization_code"
             })
@@ -38,7 +38,7 @@ export async function GET(request: Request) {
         if (!tockenResponse.ok) {
 
             return NextResponse.json({ error: "Failed to exchange code for access token" }, { status: 500 });
-        
+
         } else {
 
             const accessToken: string = (response as any).access_token;
@@ -55,7 +55,7 @@ export async function GET(request: Request) {
             if (!userInfo.ok) {
 
                 return NextResponse.json({ error: "Failed to fetch user data" }, { status: 500 });
-            
+
             } else {
 
                 const slackInfo = fetch(`https://slack.com/api/users.info?user=${userData.identity.slack_id}`, {
@@ -70,22 +70,40 @@ export async function GET(request: Request) {
                 if (!slackData.ok) {
 
                     return NextResponse.json({ error: "Failed to fetch slack user data" }, { status: 500 });
-                
+
                 } else {
 
-                    console.error("Failed to fetch slack user data:", slackData);
-                    cookieStore.set("name", userData.identity.name, { maxAge: 60 * 60 * 24, path: "/" });
-                    cookieStore.set("pfp", slackData.profile.image_original, { maxAge: 60 * 60 * 24, path: "/" });
-                    cookieStore.set("status_text", slackData.profile.status_text, { maxAge: 60 * 60 * 24, path: "/" });
-                    
-                    return NextResponse.json({ message: "Successfully fetched slack data", data: slackData }, { status: 200 });
+                    console.error("Failed to fetch slack slack data:", slackData);
+                    cookieStore.set("name", userData.identity.first_name, { maxAge: 60 * 60 * 24, path: "/" });
+                    cookieStore.set("pfp", slackData.user.profile.image_original, { maxAge: 60 * 60 * 24, path: "/" });
+                    cookieStore.set("status_text", slackData.user.profile.status_text, { maxAge: 60 * 60 * 24, path: "/" });
+
+                    const signed_in_before: Object | null = db.collection("user_data").findOne({ "user_info.identity.id": userData.identity.id });
+
+                    if (signed_in_before) {
+
+                        db.collection("user_data").updateOne({ "user_info.identity.id": userData.identity.id }, { $set: { user_info: userData, slack_info: slackData } });
+
+                        return NextResponse.redirect(new URL('/home', request.url));
+
+                    } else {
+
+                        db.collection("user_data").insertOne({
+                            user_info: userData,
+                            slack_info: slackData
+                        });
+
+                        return NextResponse.redirect(new URL('/home', request.url));
+
+                    }
                 }
             }
         }
 
     } catch (error) {
 
-        return NextResponse.json({ error: "Failed to exchange code for access token" }, { status: 500 });
-    
+        console.log("Authorisation Failed!", error);
+        return NextResponse.json({ error: "Authorisation Failed!" }, { status: 500 });
+
     }
 }
