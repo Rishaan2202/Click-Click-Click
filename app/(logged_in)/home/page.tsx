@@ -1,8 +1,9 @@
 import { getInfo } from "./server_actions/get_info"
 import Image from "next/image"
+import { Suspense } from 'react'
 import { connection } from "next/server";
 
-const page = async () => {
+const HomeContent = async () => {
 
   await connection();
 
@@ -17,4 +18,10 @@ const page = async () => {
   )
 }
 
-export default page
+export default function page() {
+  return (
+    <Suspense fallback={<div>Loading Home...</div>}>
+      <HomeContent/>
+    </Suspense>
+  )
+}
