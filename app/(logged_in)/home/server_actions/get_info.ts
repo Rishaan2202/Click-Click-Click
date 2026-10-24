@@ -1,3 +1,5 @@
+'use server'
+
 import { cookies } from "next/headers";
 
 export async function getInfo(): Promise<{ name: string | undefined; pfp: string | undefined; status_text: string | undefined }> {

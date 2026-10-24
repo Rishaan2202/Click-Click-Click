@@ -1,7 +1,10 @@
-import { getInfo } from "@/app/server_actions/get_info"
+import { getInfo } from "./server_actions/get_info"
 import Image from "next/image"
+import { connection } from "next/server";
 
 const page = async () => {
+
+  await connection();
 
   const info = await getInfo();
 
