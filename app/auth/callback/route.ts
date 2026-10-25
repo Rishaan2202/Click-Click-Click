@@ -90,7 +90,8 @@ export async function GET(request: Request) {
 
                         db.collection("user_data").insertOne({
                             user_info: userData,
-                            slack_info: slackData
+                            slack_info: slackData,
+                            login_time: new Date()
                         });
 
                         return NextResponse.redirect(new URL('/home', request.url));
