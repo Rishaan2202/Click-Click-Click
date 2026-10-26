@@ -57,7 +57,7 @@ const Home_Content = () => {
 
             <div className="flex flex-col items-center justify-center absolute left-1/2 -translate-x-1/5 z-1 top-0 flex flex-col items-center justify-center bg-[var(--twilight-indigo)] w-[20vw] h-[12vh] rounded-b-xl">
                 <div className="text-[var(--eggshell)] flex flex-col items-center justify-center gap-4">
-                    <h1 className="text-2xl">Score: {score}</h1>
+                    <h1 className="text-2xl">Money: ${score}</h1>
                 </div>
             </div>
 
