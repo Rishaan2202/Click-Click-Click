@@ -1,6 +1,12 @@
 'use client'
 
 const UpgradeContent = () => {
+
+    const handleBuyUpgrade = (upgradeName: string, upgradeCost: number) => {
+        // Purchase Logic (To Be Done)
+        console.log(`Buying upgrade: ${upgradeName} for $${upgradeCost}`);
+    }
+
     return (
         <div>
             <div className='flex flex-wrap gap-4 m-2 items-center justify-center'>
@@ -18,7 +24,7 @@ const UpgradeContent = () => {
                     <h2 className='text-2xl m-2'>Multiplier Lvl 1</h2>
                     <p className='text-[var(--eggshell)] m-2'>Multiplies the money you get per click!</p>
                     <div className='flex gap-2 items-center justify-center'>
-                        <h1>$100</h1>
+                        <h1 className='bg-[var(--eggshell)] p-2 rounded-xl'>$100</h1>
                         <button className='hover:scale-[1.1] hover:cursor-pointer bg-[var(--twilight-indigo)] hover:scale-[1.1] w-[10vw] text-[var(--eggshell)] font-bold py-2 px-4 rounded m-2'>Buy</button>
                     </div>
                 </div>
@@ -27,7 +33,7 @@ const UpgradeContent = () => {
                     <h2 className='text-2xl m-2'>Multiplier Lvl 1</h2>
                     <p className='text-[var(--eggshell)] m-2'>Multiplies the money you get per click!</p>
                     <div className='flex gap-2 items-center justify-center'>
-                        <h1>Lvl 1</h1>
+                        <h1 className='bg-[var(--eggshell)] p-2 rounded-xl'>Lvl 1</h1>
                         <button className='hover:scale-[1.1] hover:cursor-pointer bg-[var(--twilight-indigo)] hover:scale-[1.1] w-[10vw] text-[var(--eggshell)] font-bold py-2 px-4 rounded m-2'>Buy</button>
                     </div>
                 </div>
@@ -36,7 +42,7 @@ const UpgradeContent = () => {
                     <h2 className='text-2xl m-2'>Multiplier</h2>
                     <p className='text-[var(--eggshell)] m-2'>Multiplies the money you get per click!</p>
                     <div className='flex gap-2 items-center justify-center'>
-                        <h1>Lvl 1</h1>
+                        <h1 className='bg-[var(--eggshell)] p-2 rounded-xl'>Lvl 1</h1>
                         <button className='hover:scale-[1.1] hover:cursor-pointer bg-[var(--twilight-indigo)] hover:scale-[1.1] w-[10vw] text-[var(--eggshell)] font-bold py-2 px-4 rounded m-2'>Buy</button>
                     </div>
                 </div>
@@ -45,7 +51,7 @@ const UpgradeContent = () => {
                     <h2 className='text-2xl m-2'>Multiplier</h2>
                     <p className='text-[var(--eggshell)] m-2'>Multiplies the money you get per click!</p>
                     <div className='flex gap-2 items-center justify-center'>
-                        <h1>Lvl 1</h1>
+                        <h1 className='bg-[var(--eggshell)] p-2 rounded-xl'>Lvl 1</h1>
                         <button className='hover:scale-[1.1] hover:cursor-pointer bg-[var(--twilight-indigo)] hover:scale-[1.1] w-[10vw] text-[var(--eggshell)] font-bold py-2 px-4 rounded m-2'>Buy</button>
                     </div>
                 </div>
@@ -54,7 +60,7 @@ const UpgradeContent = () => {
                     <h2 className='text-2xl m-2'>Multiplier</h2>
                     <p className='text-[var(--eggshell)] m-2'>Multiplies the money you get per click!</p>
                     <div className='flex gap-2 items-center justify-center'>
-                        <h1>Lvl 1</h1>
+                        <h1 className='bg-[var(--eggshell)] p-2 rounded-xl'>Lvl 1</h1>
                         <button className='hover:scale-[1.1] hover:cursor-pointer bg-[var(--twilight-indigo)] hover:scale-[1.1] w-[10vw] text-[var(--eggshell)] font-bold py-2 px-4 rounded m-2'>Buy</button>
                     </div>
                 </div>

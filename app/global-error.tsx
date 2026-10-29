@@ -16,11 +16,9 @@ export default function GlobalError({ error, reset }: GlobalErrorProps): React.J
 
   return (
     <html lang='en'>
-      <body>
-        <h1>
-          A critical error occurred. Please try again later. If the problem still persists, contact @Rishaan on slack!
-        </h1>
-        <button onClick={() => reset()}>Retry</button>
+      <body className='flex items-center justify-center flex-col h-screen gap-6'>
+        <h1 className='text-6xl'>A critical error occurred. Please try again later. If the problem still persists, contact @Rishaan on slack!</h1>
+        <button className='bg-[var(--burnt-peach)] text-[var(--eggshell)] px-4 py-2 scale-[1.3] rounded mt-4 hover:scale-[1.5] hover: cursor-pointer' onClick={() => reset()}>Retry</button>
       </body>
     </html>
   )
