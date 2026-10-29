@@ -1,17 +1,37 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import { syncMoney } from '../../../actions/sync_money'
+import { getDbInfo } from '@/actions/get_db_info'
 
 const Home_Content = () => {
 
+    let [score, setScore] = useState(0)
     const router = useRouter()
 
+    useEffect(() => {
+
+        const getData = async () => {
+
+            const db_info = await getDbInfo();
+
+            if (!db_info || db_info === null) {
+                router.push('/error')
+                return
+            }
+
+            setScore(db_info.data.money)
+        }
+
+        getData();
+
+    }, [])
+
     const handleRouter = (path: string) => {
+        syncMoney(score)
         router.push(path)
     }
-
-    let [score, setScore] = useState(0)
 
     return (
         <div>

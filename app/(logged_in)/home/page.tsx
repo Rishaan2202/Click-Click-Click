@@ -1,6 +1,6 @@
-import { getInfo } from "./server_actions/get_info"
+import { getInfo } from "../../../actions/get_cookie_info"
 import Image from "next/image"
-import { ReactNode, Suspense } from 'react'
+import { Suspense } from 'react'
 import { connection } from "next/server";
 import Home_Content from "./home_content";
 
@@ -9,7 +9,6 @@ const HomeContent = async () => {
   await connection();
 
   const info = await getInfo();
-  const score: ReactNode = 1
 
   return (
     <>
@@ -24,7 +23,7 @@ const HomeContent = async () => {
 
 export default function page() {
   return (
-    <Suspense fallback={<div>Loading Home...</div>}>
+    <Suspense fallback={<div className="flex items-center justify-center text-7xl">Loading Home...</div>}>
       <HomeContent />
     </Suspense>
   )

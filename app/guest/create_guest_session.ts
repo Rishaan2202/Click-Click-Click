@@ -9,9 +9,18 @@ export async function createGuestSession(name: string) {
   const db = await getDatabase();
 
   await db.collection("user_data").insertOne({
+    user_info: {
+      identity: {
+        id: `guest_${Date.now()}`,
+      },
+    },
     name: name,
     type: "guest",
     createdAt: new Date(),
+    data: {
+      money: 0,
+      upgrades: [],
+    },
   });
 
   cookieStore.set("name", name, {

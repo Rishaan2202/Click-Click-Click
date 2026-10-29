@@ -77,12 +77,13 @@ export async function GET(request: Request) {
                     cookieStore.set("name", userData.identity.first_name, { maxAge: 60 * 60 * 24, path: "/" });
                     cookieStore.set("pfp", slackData.user.profile.image_original, { maxAge: 60 * 60 * 24, path: "/" });
                     cookieStore.set("status_text", slackData.user.profile.status_text, { maxAge: 60 * 60 * 24, path: "/" });
+                    cookieStore.set("id", userData.identity.id, { maxAge: 60 * 60 * 24, path: "/" });
 
-                    const signed_in_before: Object | null = db.collection("user_data").findOne({ "user_info.identity.id": userData.identity.id });
+                    const signed_in_before = await db.collection("user_data").findOne({ "user_info.identity.id": userData.identity.id });
 
                     if (signed_in_before) {
 
-                        db.collection("user_data").updateOne({ "user_info.identity.id": userData.identity.id }, { $set: { user_info: userData, slack_info: slackData } });
+                        db.collection("user_data").updateOne({ "user_info.identity.id": userData.identity.id }, { $set: { user_info: userData, slack_info: slackData, data: { money: signed_in_before.data.money, upgrades: signed_in_before.data.upgrades } } });
 
                         return NextResponse.redirect(new URL('/home', request.url));
 
@@ -91,7 +92,11 @@ export async function GET(request: Request) {
                         db.collection("user_data").insertOne({
                             user_info: userData,
                             slack_info: slackData,
-                            login_time: new Date()
+                            login_time: new Date(),
+                            data: {
+                                money: 0,
+                                upgrades: []
+                            }
                         });
 
                         return NextResponse.redirect(new URL('/home', request.url));
