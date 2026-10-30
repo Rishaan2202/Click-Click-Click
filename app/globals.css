@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @font-face {
   font-family: "CustomFont";
-  src: url('@/app/assets/spongebob.ttf') format('truetype');
+  src: url('../assets/spongebob.ttf') format('truetype');
 }
 
 :root {

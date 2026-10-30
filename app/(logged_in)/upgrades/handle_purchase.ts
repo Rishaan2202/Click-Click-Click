@@ -1,5 +1,5 @@
 import { syncMoney } from '@/actions/sync_money';
-import { getDbInfo } from '@/actions/get_db_info';
+import { getDbInfo } from '@/actions/get_user_info';
 import { redirect } from 'next/navigation';
 
 const GetBalance = async () => {

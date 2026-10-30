@@ -1,4 +1,4 @@
-import { getDbInfo } from "../../../actions/get_db_info"
+import { getDbInfo } from "../../../actions/get_user_info"
 
 const GetBalance = async () => {
 

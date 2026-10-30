@@ -1,9 +1,13 @@
-import React from 'react'
+import LeaderboardContent from "./leaderboard_content"
+import { leaderboard_data } from "./leaderboard_data"
 
-const Leaderboard = () => {
+const Leaderboard = async () => {
+
+  const data = await leaderboard_data()
+
   return (
     <div>
-      Leaderboard
+      <div><LeaderboardContent values={data} /></div>
     </div>
   )
 }

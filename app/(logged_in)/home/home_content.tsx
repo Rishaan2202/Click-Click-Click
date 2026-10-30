@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { syncMoney } from '../../../actions/sync_money'
-import { getDbInfo } from '@/actions/get_db_info'
+import { getDbInfo } from '@/actions/get_user_info'
 
 const Home_Content = () => {
 
