@@ -7,11 +7,12 @@ export async function createGuestSession(name: string) {
 
   const cookieStore = await cookies()
   const db = await getDatabase();
+  const id = `guest_${Date.now()}`
 
   await db.collection("user_data").insertOne({
     user_info: {
       identity: {
-        id: `guest_${Date.now()}`,
+        id: id,
       },
     },
     name: name,
@@ -29,4 +30,9 @@ export async function createGuestSession(name: string) {
     maxAge: 60 * 60,
     path: '/',
   })
+  cookieStore.set("id", id, { 
+    httpOnly: true,
+    secure: true,
+    maxAge: 60 * 60 * 24,
+    path: "/" });
 }

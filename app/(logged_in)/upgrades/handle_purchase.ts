@@ -1,10 +1,10 @@
 import { syncMoney } from '@/actions/sync_money';
-import { getDbInfo } from '@/actions/get_user_info';
+import { getUserInfo } from '@/actions/get_user_info';
 import { redirect } from 'next/navigation';
 
 const GetBalance = async () => {
 
-    const user_info = await getDbInfo()
+    const user_info = await getUserInfo();
 
     if (user_info === null) {
         return null;

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { syncMoney } from '../../../actions/sync_money'
-import { getDbInfo } from '@/actions/get_user_info'
+import { getUserInfo } from '@/actions/get_user_info'
 
 const Home_Content = () => {
 
@@ -14,7 +14,7 @@ const Home_Content = () => {
 
         const getData = async () => {
 
-            const db_info = await getDbInfo();
+            const db_info = await getUserInfo();
 
             if (!db_info || db_info === null) {
                 router.push('/error')

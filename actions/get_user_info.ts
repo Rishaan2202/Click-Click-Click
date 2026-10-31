@@ -3,7 +3,7 @@
 import { getDatabase } from '@/lib/mongodb';
 import { cookies } from 'next/headers';
 
-export const getDbInfo = async () => {
+export const getUserInfo = async () => {
 
     const cookieStore = await cookies();
 
