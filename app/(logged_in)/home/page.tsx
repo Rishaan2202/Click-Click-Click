@@ -23,7 +23,7 @@ const HomeContent = async () => {
 
 export default function page() {
   return (
-    <Suspense fallback={<div className="flex items-center justify-center text-7xl">Loading Home...</div>}>
+    <Suspense fallback={<div className="flex items-center justify-center h-screen text-6xl">Loading Home...</div>}>
       <HomeContent />
     </Suspense>
   )
