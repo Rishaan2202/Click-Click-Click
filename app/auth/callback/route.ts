@@ -4,8 +4,8 @@ import { cookies } from "next/headers";
 
 export async function GET(request: Request) {
 
-    const db = await getDatabase();
     const cookieStore = await cookies();
+    const db = await getDatabase();
 
     const { searchParams } = new URL(request.url);
     const code: string | null = searchParams.get("code");

@@ -2,8 +2,11 @@
 
 import { getDatabase } from '@/lib/mongodb';
 import { cookies } from 'next/headers';
+import { connection } from 'next/server';
 
 export const getUserInfo = async () => {
+
+    await connection();
 
     const cookieStore = await cookies();
 

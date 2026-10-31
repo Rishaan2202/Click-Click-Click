@@ -8,6 +8,8 @@ import { getUserInfo } from '@/actions/get_user_info'
 const Home_Content = () => {
 
     let [score, setScore] = useState(0)
+    const [upgrades, setUpgrades] = useState([])
+
     const router = useRouter()
 
     useEffect(() => {
@@ -22,6 +24,7 @@ const Home_Content = () => {
             }
 
             setScore(db_info.data.money)
+            setUpgrades(db_info.data.upgrades)
         }
 
         getData();
@@ -31,6 +34,12 @@ const Home_Content = () => {
     const handleRouter = (path: string) => {
         syncMoney(score)
         router.push(path)
+    }
+
+    if (upgrades.includes("Auto Clicker")) {
+        setTimeout(() => {
+            score
+        }, 1000)
     }
 
     return (
