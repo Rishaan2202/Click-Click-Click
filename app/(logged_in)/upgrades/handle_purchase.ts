@@ -20,7 +20,6 @@ const GetBalance = async () => {
 const handleBuyUpgrade = async (upgradeName: string, upgradeLevel: number, upgradeCost: number) => {
 
     const balance = await GetBalance();
-    const db = await getDatabase();
 
     if (balance === null) {
         console.error("Failed to get balance");
@@ -38,10 +37,22 @@ const handleBuyUpgrade = async (upgradeName: string, upgradeLevel: number, upgra
         return;
     }
 
-    upgradeLevel = upgradeLevel + 1;
+    const db = await getDatabase();
+
+    const upgrades = (await getUserInfo())?.data.upgrades || [];
+
+    if (upgrades.some((upgrade: { name: string; level: number }) => upgrade.name === upgradeName && upgrade.level >= upgradeLevel)) {
+        db.collection('user_data').updateOne(
+            { "user_info.identity.id": (await getUserInfo())?.user_info.identity.id, "data.upgrades": { $elemMatch: { name: upgradeName, level: upgradeLevel } } },
+            { $inc: {'data.upgrades.$.level': 1} }
+        );
+        console.log(`Upgrade ${upgradeName} level ${upgradeLevel} already purchased`);
+        return;
+    }
+
     db.collection('user_data').updateOne(
         { "user_info.identity.id": (await getUserInfo())?.user_info.identity.id },
-        { $set: { [`data.upgrades.${upgradeName}`]: upgradeLevel } }
+        { $set: { [`data.upgrades`]: [...(await getUserInfo())?.data.upgrades, { name: upgradeName, level: upgradeLevel }] } }
     );
     console.log(`Purchased upgrade: ${upgradeName} for $${upgradeCost}`);
 }

@@ -8,9 +8,22 @@ import { getUserInfo } from '@/actions/get_user_info'
 const Home_Content = () => {
 
     let [score, setScore] = useState(0)
-    const [upgrades, setUpgrades] = useState([])
+    const [upgrades, setUpgrades] = useState([] as any)
+    
+    const auto_clicker_level = upgrades.find((upgrade: { name: string; level: number }) => upgrade.name === "Auto-Clicker")?.level || 0;
 
     const router = useRouter()
+
+    useEffect(() => {
+
+        if (auto_clicker_level > 0) {
+            const timer: NodeJS.Timeout = setInterval(() => {
+                setScore(prevScore => prevScore + 1)
+            }, 3000);
+        }
+
+    }, [auto_clicker_level])
+
 
     useEffect(() => {
 
@@ -34,12 +47,6 @@ const Home_Content = () => {
     const handleRouter = (path: string) => {
         syncMoney(score)
         router.push(path)
-    }
-
-    if (upgrades.includes("Auto Clicker")) {
-        setTimeout(() => {
-            score
-        }, 1000)
     }
 
     return (
