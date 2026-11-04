@@ -5,6 +5,7 @@ type LeaderboardData = {
 }
 
 const leaderboard_data = async () => {
+
     const db_info = await getDbData();
 
     if (db_info === null || !db_info) {

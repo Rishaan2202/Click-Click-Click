@@ -12,9 +12,9 @@ const HomeContent = async () => {
 
   return (
     <>
-      <div className="flex m-2">
+      <div className="flex m-2 z-2">
         <Image src={info.pfp || "https://cdn.hackclub.com/01a17348-fd44-7557-9e09-f3e837b2f0ab/Portrait_Placeholder.png"} alt="Profile Picture" width={50} height={50} className="rounded-xl left-3 top-3" />
-        <h1 className="text-3xl m-2">{info.name}</h1>
+        <h1 className="text-3xl z-2 m-2 max-sm:text-xs">{info.name}</h1>
       </div>
       <Home_Content/>
     </>

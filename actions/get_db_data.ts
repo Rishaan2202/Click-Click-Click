@@ -2,7 +2,7 @@ import { getDatabase } from '@/lib/mongodb';
 
 const getDbData = async () => {
     const db = await getDatabase();
-    const data = db.collection("user_data").find({}).toArray();
+    const data = await db.collection("user_data").find({}).toArray();
     return data;
 }
 
