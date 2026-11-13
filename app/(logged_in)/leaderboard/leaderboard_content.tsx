@@ -22,11 +22,14 @@ const LeaderboardContent = async () => {
 
     return (
         <div>
+            <h1 className='text-5xl m-4'>
+                Leaderboard
+            </h1>
             <div>
                 {values.map((value, index) => (
-                    <div key={index} className="flex gap-2 m-2 p-2 bg-[var(--muted-teal)] rounded-xl">
-                        <span>{value.name}</span>
-                        <span>{value.score}</span>
+                    <div key={index} className="flex justify-between m-2 p-2 bg-[var(--muted-teal)] rounded-xl">
+                        <span className='flex w-[20vw] justify-center items-center'>{value.name}</span>
+                        <span className='flex w-[10vw] justify-center items-center'>{value.score}</span>
                     </div>
                 ))}
             </div>
