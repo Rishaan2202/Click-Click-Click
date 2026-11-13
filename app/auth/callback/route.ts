@@ -4,8 +4,6 @@ import { cookies } from "next/headers";
 
 export async function GET(request: Request) {
 
-    const cookieStore = await cookies();
-
     const { searchParams } = new URL(request.url);
     const code: string | null = searchParams.get("code");
     const error: string | null = searchParams.get("error");
@@ -73,10 +71,15 @@ export async function GET(request: Request) {
                 } else {
 
                     const db = await getDatabase();
+                    const cookieStore = await cookies();
 
                     if (!db || db == null) {
-                        console.log('Failed to connect to the database while authentification')
+                        console.log('Failed to connect to the database while authentication')
                         return NextResponse.json({ error: 'Failed to connect to the database while authentification'}, { status: 500 });
+                    }
+
+                    if (!cookieStore) {
+                        console.log('Failed to access cookies while authentication')
                     }
 
                     console.error("Failed to fetch slack slack data:", slackData);
