@@ -39,6 +39,11 @@ const handleBuyUpgrade = async (upgradeName: string, upgradeLevel: number, upgra
 
     const db = await getDatabase();
 
+    if (!db || db == null) {
+        console.log('Failed to connect with the database while making a purchase')
+        return;
+    }
+
     const upgrades = (await getUserInfo())?.data.upgrades || [];
 
     if (upgrades.some((upgrade: { name: string; level: number }) => upgrade.name === upgradeName && upgrade.level >= upgradeLevel)) {

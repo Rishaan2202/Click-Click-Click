@@ -5,7 +5,6 @@ import { cookies } from "next/headers";
 export async function GET(request: Request) {
 
     const cookieStore = await cookies();
-    const db = await getDatabase();
 
     const { searchParams } = new URL(request.url);
     const code: string | null = searchParams.get("code");
@@ -72,6 +71,13 @@ export async function GET(request: Request) {
                     return NextResponse.json({ error: "Failed to fetch slack user data" }, { status: 500 });
 
                 } else {
+
+                    const db = await getDatabase();
+
+                    if (!db || db == null) {
+                        console.log('Failed to connect to the database while authentification')
+                        return NextResponse.json({ error: 'Failed to connect to the database while authentification'}, { status: 500 });
+                    }
 
                     console.error("Failed to fetch slack slack data:", slackData);
                     cookieStore.set("name", userData.identity.first_name, { maxAge: 60 * 60 * 24, path: "/" });
