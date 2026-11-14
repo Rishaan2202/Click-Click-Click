@@ -2,15 +2,16 @@ import Link from 'next/link'
 
 type buttonProps = {
     text: string;
-    link?: string;
+    styling?: string;
+    onClick?: () => void;
 }
 
-const Button = ({ text, link }: buttonProps) => {
+const Button = ({ text, styling, onClick }: buttonProps) => {
     return (
         <>
-            <Link href={link || '#'} >
+            <button className={`btn ${styling || ''}`} onClick={onClick}>
                 {text}
-            </Link>
+            </button>
         </>
     )
 }

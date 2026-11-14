@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { syncMoney } from '../../../actions/sync_money'
 import { getUserInfo } from '@/actions/get_user_info'
+import Button from '@/components/button'
 import Image from 'next/image'
 import mascot from '@/assets/mascot.png'
 
@@ -79,21 +80,12 @@ const Home_Content = () => {
                     </div>
                     <div className="relative bottom-[53vh] max-sm:risht-[12vw] flex flex-col right-[14vw] items-center justify-center gap-4 bg-[var(--muted-teal)] max-sm:w-[52vw] max-sm:right-[50vw] w-[16vw] h-[53vh] rounded-r-xl">
                         <div className='gap-3 flex flex-col items-center justify-center'>
-                            <button onClick={() => handleRouter('/upgrades')} className='hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center'>
-                                <span className='text-center text-[var(--eggshell)]'>Upgrades</span>
-                            </button>
-                            <button onClick={() => handleRouter('/shop')} className='hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center'>
-                                <span className='text-center text-[var(--eggshell)]'>Shop</span>
-                            </button>
-                            <button onClick={() => handleRouter('/leaderboard')} className='hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center'>
-                                <span className='text-center text-[var(--eggshell)]'>Leaderboard</span>
-                            </button>
-                            <button onClick={() => handleRouter('/stats')} className='hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center'>
-                                <span className='text-center text-[var(--eggshell)]'>Stats</span>
-                            </button>
-                            <button onClick={() => handleRouter('/idk')} className='hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center'>
-                                <span className='text-center text-[var(--eggshell)]'>IDK</span>
-                            </button>
+                            
+                            <Button text='Upgrades' onClick={() => handleRouter('/upgrades')} styling='text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center' />
+                            <Button text='Shop' onClick={() => handleRouter('/shop')} styling='text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center' />
+                            <Button text='Leaderboard' onClick={() => handleRouter('/leaderboard')} styling='text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center' />
+                            <Button text='Stats' onClick={() => handleRouter('/stats')} styling='text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center' />
+                            <Button text='IDK' onClick={() => handleRouter('/idk')} styling='text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center' />
                         </div>
                     </div>
                 </div>
