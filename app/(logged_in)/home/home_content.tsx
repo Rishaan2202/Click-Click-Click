@@ -4,10 +4,12 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { syncMoney } from '../../../actions/sync_money'
 import { getUserInfo } from '@/actions/get_user_info'
+import Image from 'next/image'
+import mascot from '@/assets/mascot.png'
 
 const Home_Content = () => {
 
-    let [score, setScore] = useState(0)
+    let [score, setScore] = useState(0) 
     const [upgrades, setUpgrades] = useState([] as any)
     const [menuOpen_1, setMenuOpen_1] = useState(false)
     const [menuOpen_2, setMenuOpen_2] = useState(false)
@@ -18,11 +20,16 @@ const Home_Content = () => {
 
     useEffect(() => {
 
-        if (auto_clicker_level > 0) {
-            const timer: NodeJS.Timeout = setInterval(() => {
-                setScore(prevScore => prevScore + 1)
-            }, 3000);
+        if (auto_clicker_level <= 0) {
+            return;
         }
+        
+        const timer: NodeJS.Timeout = setInterval(() => {
+            setScore(prevScore => prevScore + 1);
+        }, (3000/auto_clicker_level));
+
+        
+        return () => clearInterval(timer);
 
     }, [auto_clicker_level])
 
@@ -60,10 +67,11 @@ const Home_Content = () => {
     }
 
     return (
-        <div>
+        <div className='overflow-y-hidden'>
+            <Image src={mascot} className='absolute right-2 top-2 z-3' alt='Rusty' width={80} height={120}/>
             <div className="flex flex-col gap-1 max-sm:text-xs">
 
-                <div onClick={handleAppear_1} className={`z-2 max-sm:w-[30vw] hover:translate-x-[11vw] transition-transform duration-300 ease-in-out ${menuOpen_1 ? `max-sm:translate-x-[50vw]` : ``}`}>
+                <div onClick={handleAppear_1} className={`w-[20vw] z-2 max-sm:w-[30vw] hover:translate-x-[11vw] transition-transform duration-300 ease-in-out ${menuOpen_1 ? `max-sm:translate-x-[50vw]` : ``}`}>
                     <div className="relative right-[14vw] max-sm:right-[15vw] flex flex-col items-center justify-center gap-4 bg-[var(--muted-teal)] w-[16vw] h-[53vh] rounded-r-xl">
                         <div className="bg-[var(--muted-teal)] max-sm:w-[5vw] max-sm:left-[10vw] w-[3vw] h-[13vh] rounded-r-xl relative left-[9vw] flex flex-col items-center justify-center gap-4">
                             <h1 className="text-xl">➜</h1>
@@ -99,7 +107,7 @@ const Home_Content = () => {
 
             </div>
 
-            <div className={`left-1/2 -translate-x-1/5 z-1 transition-transform duration-300 ease-in-out flex flex-col items-center justify-center absolute top-0 flex flex-col items-center justify-center bg-[var(--twilight-indigo)] w-[20vw] h-[12vh] max-sm:h-[7vh] rounded-b-xl`}>
+            <div className={`left-1/2 -translate-x-1/5 z-1 transition-transform duration-300 ease-in-out flex flex-col items-center justify-center absolute top-0 bg-[var(--twilight-indigo)] w-[20vw] h-[12vh] max-sm:h-[7vh] rounded-b-xl`}>
                 <div className="text-[var(--eggshell)] flex flex-col items-center justify-center gap-4">
                     <h1 className="text-2xl max-sm:text-xs">Money: ${score}</h1>
                 </div>
