@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { syncMoney } from '../../../actions/sync_money'
 import { getUserInfo } from '@/actions/get_user_info'
-import Button from '@/components/button'
 import Image from 'next/image'
 import mascot from '@/assets/mascot.png'
 
@@ -79,13 +78,12 @@ const Home_Content = () => {
                         </div>
                     </div>
                     <div className="relative bottom-[53vh] max-sm:risht-[12vw] flex flex-col right-[14vw] items-center justify-center gap-4 bg-[var(--muted-teal)] max-sm:w-[52vw] max-sm:right-[50vw] w-[16vw] h-[53vh] rounded-r-xl">
-                        <div className='gap-3 flex flex-col items-center justify-center'>
-                            
-                            <Button text='Upgrades' onClick={() => handleRouter('/upgrades')} styling='text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center' />
-                            <Button text='Shop' onClick={() => handleRouter('/shop')} styling='text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center' />
-                            <Button text='Leaderboard' onClick={() => handleRouter('/leaderboard')} styling='text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center' />
-                            <Button text='Stats' onClick={() => handleRouter('/stats')} styling='text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center' />
-                            <Button text='IDK' onClick={() => handleRouter('/idk')} styling='text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center' />
+                        <div className='gap-3 flex flex-col items-center justify-center'> 
+                            <button  onClick={() => handleRouter('/upgrades')} className='text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center'>Upgrades</button>
+                            <button  onClick={() => handleRouter('/shop')} className='text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center'>Shop</button>
+                            <button  onClick={() => handleRouter('/leaderboard')} className='text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center'>Leaderboard</button>
+                            <button  onClick={() => handleRouter('/stats')} className='text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center'>Stats</button>
+                            <button  onClick={() => handleRouter('/idk')} className='text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center'>IDK</button>
                         </div>
                     </div>
                 </div>
@@ -105,8 +103,8 @@ const Home_Content = () => {
                 </div>
             </div>
 
-            <button onClick={() => { setScore(score + 1) }} className="absolute border-4 border-dashed border-[var(--burnt-peach)] w-[80vw] right-0 h-[90vh] top-[5vh] right-[3vw] rounded-xl flex flex-col items-center justify-center gap-4">
-                <h1 className="text-3xl font-bold">Click Here</h1>
+            <button onClick={() => { setScore(score + 1) }} className="text-3xl font-boldabsolute border-4 border-dashed border-[var(--burnt-peach)] w-[80vw] right-0 h-[90vh] top-[5vh] right-[3vw] rounded-xl flex flex-col items-center justify-center gap-4">
+                <h1>Click Here</h1>
             </button>
         </div>
     )
