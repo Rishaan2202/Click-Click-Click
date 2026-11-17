@@ -23,7 +23,9 @@ const leaderboard_data = async () => {
         return [{ name: "", score: 0 }];
     }
 
-    return values;
+    const sortedValues = values.sort((a, b) => b.score - a.score);
+
+    return sortedValues;
 }
 
 export { leaderboard_data };

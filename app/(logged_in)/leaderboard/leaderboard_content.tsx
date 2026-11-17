@@ -26,10 +26,27 @@ const LeaderboardContent = async () => {
                 Leaderboard
             </h1>
             <div>
+                <div className="flex w-[60vw] justify-between m-2 p-2 bg-[var(--burnt-peach)] rounded-xl">
+                    <div className='flex w-[20vw] justify-between items-center'>
+                        <span className='mx-2'>#</span>
+                        <div className='flex w-[15vw] items-center justify-center'>
+                            <span>Name</span>
+                        </div>
+                    </div>
+                    <span className='flex w-[10vw] justify-center items-center'>Money</span>
+                </div>
+
                 {values.map((value, index) => (
-                    <div key={index} className="flex justify-between m-2 p-2 bg-[var(--muted-teal)] rounded-xl">
-                        <span className='flex w-[20vw] justify-center items-center'>{value.name}</span>
-                        <span className='flex w-[10vw] justify-center items-center'>{value.score}</span>
+                    <div className="flex items-center justify-left" key={index}>
+                        <div key={index} className="flex w-[60vw] justify-between m-2 p-2 bg-[var(--muted-teal)] rounded-xl">
+                            <div className='flex w-[20vw] justify-between items-center'>
+                                <span className='mx-2'>{index + 1}</span>
+                                <div className='flex w-[15vw] items-center justify-center'>
+                                    <span>{value.name}</span>
+                                </div>
+                            </div>
+                            <span className='flex w-[10vw] justify-center items-center'>{value.score}</span>
+                        </div>
                     </div>
                 ))}
             </div>

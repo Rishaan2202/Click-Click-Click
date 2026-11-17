@@ -3,6 +3,9 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
+import mascot from '@/assets/mascot.png'
+import Image from 'next/image'
+
 // Server Action to create a guest session
 import { createGuestSession } from './create_guest_session'
 
@@ -19,6 +22,10 @@ export default function Guest() {
     }
 
     return (
+        <> 
+        <div>
+            <Image src={mascot} alt="Hackalympics Mascot" width={90} height={90} className="absolute top-1/4 left-[69vw] m-4" />
+        </div>
         <div className='bg-[var(--burnt-peach)] min-h-screen flex flex-col items-center justify-center'>
             <div className='w-fit h-fit bg-[var(--eggshell)] rounded-lg p-8'>
             <div className=' flex flex-col items-center justify-center'>
@@ -32,5 +39,6 @@ export default function Guest() {
             </div>
             </div>
         </div>
+        </>
     )
 }
