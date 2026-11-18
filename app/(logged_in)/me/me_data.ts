@@ -17,7 +17,10 @@ const MeData = async () => {
 
     const db = await getDatabase();
     const user = await db.collection("user_data").findOne({ 'user_info.identity.id': userId });
-    console.log(user);
+    
+    if (!user || user === undefined) {
+        return;
+    }
 
     const meFinalData: MeDataType = {
         name: user?.user_info.identity.first_name || "",

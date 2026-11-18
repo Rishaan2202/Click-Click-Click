@@ -82,10 +82,10 @@ const Home_Content = () => {
                             <button  onClick={() => handleRouter('/upgrades')} className='text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center'>Upgrades</button>
                             <button  onClick={() => handleRouter('/shop')} className='text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center'>Shop</button>
                             <button  onClick={() => handleRouter('/leaderboard')} className='text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center'>Leaderboard</button>
-                            <button  onClick={() => handleRouter('/stats')} className='text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center'>Stats</button>
+                            <button  onClick={() => handleRouter('/me')} className='text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center'>Me</button>
                             <button  onClick={() => handleRouter('/idk')} className='text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center'>IDK</button>
                         </div>
-                    </div>
+                    </div>        
                 </div>
 
 

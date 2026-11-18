@@ -1,10 +1,6 @@
 import { leaderboard_data } from "./leaderboard_data";
 import { connection } from "next/server";
 
-type LeaderboardContentProps = {
-    values: Array<{ name: string; score: number }>;
-}
-
 const LeaderboardContent = async () => {
 
     await connection();

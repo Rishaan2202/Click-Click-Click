@@ -101,6 +101,7 @@ export async function GET(request: Request) {
                         db.collection("user_data").insertOne({
                             user_info: userData,
                             name: userData.identity.first_name,
+                            type: "hackclub",
                             slack_info: slackData,
                             login_time: new Date(),
                             data: {
