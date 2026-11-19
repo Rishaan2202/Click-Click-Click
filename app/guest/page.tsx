@@ -22,11 +22,13 @@ export default function Guest() {
     }
 
     return (
-        <> 
+        <>
+        <div className='bg-[var(--burnt-peach)] overflow-y-hidden'>
+        <div className='animate-slide-up'>
         <div>
             <Image src={mascot} alt="Hackalympics Mascot" width={90} height={90} className="absolute top-1/4 left-[69vw] m-4" />
         </div>
-        <div className='bg-[var(--burnt-peach)] min-h-screen flex flex-col items-center justify-center'>
+        <div className='min-h-screen flex flex-col items-center justify-center'>
             <div className='w-fit h-fit bg-[var(--eggshell)] rounded-lg p-8'>
             <div className=' flex flex-col items-center justify-center'>
                 <h2 className='text-2xl font-bold mb-4'>Welcome! What's your good name?</h2>
@@ -38,6 +40,8 @@ export default function Guest() {
                 </div>
             </div>
             </div>
+        </div>
+        </div>
         </div>
         </>
     )

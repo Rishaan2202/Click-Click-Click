@@ -4,7 +4,7 @@ import LeaderboardContent from "./leaderboard_content"
 const Leaderboard = async () => {
 
   return (
-    <div>
+    <div className='animate-slide-down'>
       <Suspense fallback={<div>Loading Leaderboard...</div>}>
         <LeaderboardContent />
       </Suspense>

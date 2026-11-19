@@ -6,11 +6,13 @@ const Upgrades = () => {
 
     return (
         <>
-            <Suspense fallback={<div className="flex items-center justify-center text-3xl">Loading Balance</div>}>
-                <GetBalance />
-            </Suspense>
+            <div className="animate-slide-down">
+                <Suspense fallback={<div className="flex items-center justify-center text-3xl">Loading Balance</div>}>
+                    <GetBalance />
+                </Suspense>
 
-            <UpgradeContent />
+                <UpgradeContent />
+            </div>
         </>
     )
 }

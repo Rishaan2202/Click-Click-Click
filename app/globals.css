@@ -1,8 +1,41 @@
 @import "tailwindcss";
+
 @font-face {
   font-family: "CustomFont";
   src: url('../assets/spongebob.ttf') format('truetype');
 }
+
+@theme {
+
+  --animate-slide-up: up 1s ease-in-out;
+  --animate-slide-down: down 1s ease-in-out;
+
+  @keyframes up {
+    0% {
+      transform: translateY(100vh);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+  }
+
+  @keyframes down {
+    0% {
+      transform: translateY(-100vh);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
 
 :root {
   --eggshell: #F4F1DE;
