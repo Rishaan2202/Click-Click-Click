@@ -16,14 +16,14 @@ export async function createGuestSession(name: string) {
         first_name: name,
       },
     },
+    name: name,
     type: "guest",
     slack_info: {
       user: {
         profile: {
-          image_original: {
-            url: "https://cdn.hackclub.com/01a17348-fd44-7557-9e09-f3e837b2f0ab/Portrait_Placeholder.png"
-          }
-        } 
+          image_original:
+            "https://cdn.hackclub.com/01a17348-fd44-7557-9e09-f3e837b2f0ab/Portrait_Placeholder.png"
+        }
       }
     },
     login_time: new Date(),
@@ -45,9 +45,10 @@ export async function createGuestSession(name: string) {
     maxAge: 60 * 60,
     path: '/',
   })
-  cookieStore.set("id", id, { 
+  cookieStore.set("id", id, {
     httpOnly: true,
     secure: true,
     maxAge: 60 * 60 * 24,
-    path: "/" });
+    path: "/"
+  });
 }

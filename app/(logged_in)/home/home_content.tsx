@@ -71,7 +71,7 @@ const Home_Content = () => {
             <Image src={mascot} className='absolute right-2 top-2 z-3' alt='Rusty' width={80} height={120} />
             <div className="flex flex-col gap-1 max-sm:text-xs">
 
-                <div onClick={handleAppear_1} className={`w-[20vw] z-2 max-sm:w-[30vw] hover:translate-x-[11vw] transition-transform duration-300 ease-in-out ${menuOpen_1 ? `max-sm:translate-x-[50vw]` : ``}`}>
+                <div onClick={handleAppear_1} className={`animate-sidebar-slide w-[20vw] z-2 max-sm:w-[30vw] hover:translate-x-[11vw] transition-transform duration-300 ease-in-out ${menuOpen_1 ? `max-sm:translate-x-[50vw]` : ``}`}>
                     <div className="relative right-[14vw] max-sm:right-[15vw] flex flex-col items-center justify-center gap-4 bg-[var(--muted-teal)] w-[16vw] h-[53vh] rounded-r-xl">
                         <div className="bg-[var(--muted-teal)] max-sm:w-[5vw] max-sm:left-[10vw] w-[3vw] h-[13vh] rounded-r-xl relative left-[9vw] flex flex-col items-center justify-center gap-4">
                             <h1 className="text-xl">➜</h1>
@@ -79,24 +79,27 @@ const Home_Content = () => {
                     </div>
                     <div className="relative -mt-[53vh] overflow-y-hidden max-sm:right-[12vw] flex flex-col right-[14vw] items-center justify-center gap-4 bg-[var(--muted-teal)] max-sm:w-[52vw] max-sm:right-[50vw] w-[16vw] h-[53vh] rounded-r-xl">
                         <div className='gap-3 flex flex-col items-center justify-center'>
-                            <button onClick={() => handleRouter('/upgrades')} className='text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center'>Upgrades</button>
-                            <button onClick={() => handleRouter('/shop')} className='text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center'>Shop</button>
-                            <button onClick={() => handleRouter('/leaderboard')} className='text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center'>Leaderboard</button>
-                            <button onClick={() => handleRouter('/me')} className='text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center'>Me</button>
-                            <button onClick={() => handleRouter('/stats')} className='text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center'>Stats</button>
+                            <button onClick={() => handleRouter('/upgrades')} className='transition-transform duration-200 ease-in-out text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center'>Upgrades</button>
+                            <button onClick={() => handleRouter('/shop')} className='transition-transform duration-200 ease-in-out text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center'>Shop</button>
+                            <button onClick={() => handleRouter('/leaderboard')} className='transition-transform duration-200 ease-in-out text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center'>Leaderboard</button>
+                            <button onClick={() => handleRouter('/me')} className='transition-transform duration-200 ease-in-out text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center'>Me</button>
+                            <button onClick={() => handleRouter('/stats')} className='transition-transform duration-200 ease-in-out text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center'>Stats</button>
                         </div>
                     </div>
                 </div>
 
 
-                <div onClick={handleAppear_2} className={`${menuOpen_2 ? `max-sm:translate-x-[50vw]` : ``} -mt-[47vh] max-sm:right-[58vw] max-sm:w-[60vw] max-sm:right-[16vw] relative right-[14vw] mt-1 hover:translate-x-[11vw] transition-transform duration-300 ease-in-out flex flex-col items-center justify-center gap-4 bg-[var(--muted-teal)] w-[16vw] h-[28vh] rounded-r-xl`}>
-                    <div className="bg-[var(--muted-teal)] w-[3vw] h-[13vh] rounded-r-xl relative left-[9vw] flex flex-col items-center justify-center gap-4">
+                <div onClick={handleAppear_2} className={`${menuOpen_2 ? `max-sm:translate-x-[50vw]` : ``} -mt-[47vh] animate-sidebar-slide max-sm:right-[58vw] max-sm:w-[60vw] max-sm:right-[16vw] relative right-[14vw] mt-1 hover:translate-x-[11vw] transition-transform duration-300 ease-in-out flex flex-col items-center justify-center gap-4 bg-[var(--muted-teal)] w-[16vw] h-[28vh] rounded-r-xl`}>
+                    
+                    <div className="bg-[var(--muted-teal)] w-[3vw] h-[13vh] -mb-[6vh] rounded-r-xl relative left-[9vw] flex flex-col items-center justify-center gap-4">
                         <h1 className="text-xl">➜</h1>
                     </div>
-                    <div className='gap-3 flex flex-col items-center justify-center'>
-                        <button onClick={() => handleRouter('/upgrades')} className='text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center'>Upgrades</button>
-                        <button onClick={() => handleRouter('/shop')} className='text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[7vh] flex flex-col align-center justify-center'>Shop</button>
+
+                    <div className='gap-3 -mt-15 flex flex-col items-center justify-center'>
+                        <button onClick={() => handleRouter('/upgrades')} className='text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] transition-transform duration-200 ease-in-out bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[9vh] flex flex-col align-center justify-center'>Upgrades</button>
+                        <button onClick={() => handleRouter('/shop')} className='text-center text-[var(--eggshell)] hover:cursor-pointer hover:scale-[1.1] transition-transform duration-200 ease-in-out bg-[var(--twilight-indigo)] rounded-xl w-[10vw] max-sm:w-[35vw] relative left-[1vw] h-[9vh] flex flex-col align-center justify-center'>Shop</button>
                     </div>
+
                 </div>
 
             </div>

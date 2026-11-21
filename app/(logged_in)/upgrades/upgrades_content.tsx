@@ -48,7 +48,7 @@ const UpgradeContent = () => {
     return (
         <div>
 
-            <button onClick={() => router.push('/home')} className='bg-[var(--twilight-indigo)] hover:scale-[1.1] w-fit text-[var(--eggshell)] fixed right-2 top-2 hover:cursor-pointer font-bold py-2 px-4 rounded m-2'>Back to Home</button>
+            <button onClick={() => router.push('/home')} className='transition-transform duration-200 ease-in-out bg-[var(--twilight-indigo)] hover:scale-[1.1] w-fit text-[var(--eggshell)] fixed right-2 top-2 hover:cursor-pointer font-bold py-2 px-4 rounded m-2'>Back to Home</button>
 
             <div className='flex flex-wrap gap-4 m-2 items-center justify-center'>
 
@@ -57,7 +57,7 @@ const UpgradeContent = () => {
                     <p className='text-[var(--eggshell)] m-2'>Let your CPU click for You!</p>
                     <div className='flex gap-2 items-center justify-center'>
                         <h1 className='bg-[var(--eggshell)] p-2 rounded-xl'>${auto_clicker_price}</h1>
-                        <button className='hover:scale-[1.1] hover:cursor-pointer bg-[var(--twilight-indigo)] hover:scale-[1.1] w-[10vw] text-[var(--eggshell)] font-bold py-2 px-4 rounded m-2' disabled={pending} onClick={() => handlePurchase("Auto-Clicker", auto_clicker_level, 20)}>Buy</button>
+                        <button className='transition-transform duration-200 ease-in-out hover:scale-[1.1] hover:cursor-pointer bg-[var(--twilight-indigo)] hover:scale-[1.1] w-[10vw] text-[var(--eggshell)] font-bold py-2 px-4 rounded m-2' disabled={pending} onClick={() => handlePurchase("Auto-Clicker", auto_clicker_level, 20)}>Buy</button>
                     </div>
                 </div>
 
@@ -66,7 +66,7 @@ const UpgradeContent = () => {
                     <p className='text-[var(--eggshell)] m-2'>Multiplies the money you get per click!</p>
                     <div className='flex gap-2 items-center justify-center'>
                         <h1 className='bg-[var(--eggshell)] p-2 rounded-xl'>${multiplier_price}</h1>
-                        <button className='hover:scale-[1.1] hover:cursor-pointer bg-[var(--twilight-indigo)] hover:scale-[1.1] w-[10vw] text-[var(--eggshell)] font-bold py-2 px-4 rounded m-2' disabled={pending} onClick={() => handlePurchase("Multiplier", multiplier_level, 100)}>Buy</button>
+                        <button className='transition-transform duration-200 ease-in-out hover:scale-[1.1] hover:cursor-pointer bg-[var(--twilight-indigo)] hover:scale-[1.1] w-[10vw] text-[var(--eggshell)] font-bold py-2 px-4 rounded m-2' disabled={pending} onClick={() => handlePurchase("Multiplier", multiplier_level, 100)}>Buy</button>
                     </div>
                 </div>
 
@@ -75,7 +75,7 @@ const UpgradeContent = () => {
                     <p className='text-[var(--eggshell)] m-2'>Multiplies the money you get per click!</p>
                     <div className='flex gap-2 items-center justify-center'>
                         <h1 className='bg-[var(--eggshell)] p-2 rounded-xl'>Lvl 1</h1>
-                        <button className='hover:scale-[1.1] hover:cursor-pointer bg-[var(--twilight-indigo)] hover:scale-[1.1] w-[10vw] text-[var(--eggshell)] font-bold py-2 px-4 rounded m-2' disabled={pending} onClick={() => handlePurchase("Placeholder 1", placeholder_1_level, 100)}>Buy</button>
+                        <button className='transition-transform duration-200 ease-in-out hover:scale-[1.1] hover:cursor-pointer bg-[var(--twilight-indigo)] hover:scale-[1.1] w-[10vw] text-[var(--eggshell)] font-bold py-2 px-4 rounded m-2' disabled={pending} onClick={() => handlePurchase("Placeholder 1", placeholder_1_level, 100)}>Buy</button>
                     </div>
                 </div>
 
@@ -84,7 +84,7 @@ const UpgradeContent = () => {
                     <p className='text-[var(--eggshell)] m-2'>Multiplies the money you get per click!</p>
                     <div className='flex gap-2 items-center justify-center'>
                         <h1 className='bg-[var(--eggshell)] p-2 rounded-xl'>Lvl 1</h1>
-                        <button className='hover:scale-[1.1] hover:cursor-pointer bg-[var(--twilight-indigo)] hover:scale-[1.1] w-[10vw] text-[var(--eggshell)] font-bold py-2 px-4 rounded m-2' disabled={pending} onClick={() => handlePurchase("Placeholder 2", placeholder_2_level, 100)}>Buy</button>
+                        <button className='transition-transform duration-200 ease-in-out hover:scale-[1.1] hover:cursor-pointer bg-[var(--twilight-indigo)] hover:scale-[1.1] w-[10vw] text-[var(--eggshell)] font-bold py-2 px-4 rounded m-2' disabled={pending} onClick={() => handlePurchase("Placeholder 2", placeholder_2_level, 100)}>Buy</button>
                     </div>
                 </div>
 
@@ -93,7 +93,7 @@ const UpgradeContent = () => {
                     <p className='text-[var(--eggshell)] m-2'>Multiplies the money you get per click!</p>
                     <div className='flex gap-2 items-center justify-center'>
                         <h1 className='bg-[var(--eggshell)] p-2 rounded-xl'>Lvl 1</h1>
-                        <button className='hover:scale-[1.1] hover:cursor-pointer bg-[var(--twilight-indigo)] hover:scale-[1.1] w-[10vw] text-[var(--eggshell)] font-bold py-2 px-4 rounded m-2' disabled={pending} onClick={() => handlePurchase("Placeholder 3", placeholder_3_level, 100)}>Buy</button>
+                        <button className='transition-transform duration-200 ease-in-out hover:scale-[1.1] hover:cursor-pointer bg-[var(--twilight-indigo)] hover:scale-[1.1] w-[10vw] text-[var(--eggshell)] font-bold py-2 px-4 rounded m-2' disabled={pending} onClick={() => handlePurchase("Placeholder 3", placeholder_3_level, 100)}>Buy</button>
                     </div>
                 </div>
 
@@ -102,7 +102,7 @@ const UpgradeContent = () => {
                     <p className='text-[var(--eggshell)] m-2'>Multiplies the money you get per click!</p>
                     <div className='flex gap-2 items-center justify-center'>
                         <h1 className='bg-[var(--eggshell)] p-2 rounded-xl'>Lvl 1</h1>
-                        <button className='hover:scale-[1.1] hover:cursor-pointer bg-[var(--twilight-indigo)] hover:scale-[1.1] w-[10vw] text-[var(--eggshell)] font-bold py-2 px-4 rounded m-2' disabled={pending} onClick={() => handlePurchase("Placeholder 4", placeholder_4_level, 100)}>Buy</button>
+                        <button className='transition-transform duration-200 ease-in-out hover:scale-[1.1] hover:cursor-pointer bg-[var(--twilight-indigo)] hover:scale-[1.1] w-[10vw] text-[var(--eggshell)] font-bold py-2 px-4 rounded m-2' disabled={pending} onClick={() => handlePurchase("Placeholder 4", placeholder_4_level, 100)}>Buy</button>
                     </div>
                 </div>
             </div>
