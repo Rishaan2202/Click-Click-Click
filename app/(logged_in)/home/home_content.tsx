@@ -14,7 +14,10 @@ const Home_Content = () => {
     const [menuOpen_1, setMenuOpen_1] = useState(false)
     const [menuOpen_2, setMenuOpen_2] = useState(false)
 
+    const [multiplier, setMultiplier] = useState(1)
+
     const auto_clicker_level = upgrades.find((upgrade: { name: string; level: number }) => upgrade.name === "Auto-Clicker")?.level || 0;
+    const multiplier_level = upgrades.find((upgrade: { name: string; level: number }) => upgrade.name === "Multiplier")?.level || 0;
 
     const router = useRouter()
 
@@ -33,6 +36,16 @@ const Home_Content = () => {
 
     }, [auto_clicker_level])
 
+    useEffect(() => {
+      
+        if (multiplier_level <= 0) {
+            return;
+        }
+
+        setMultiplier(multiplier_level * 3);
+
+    }, [multiplier_level])
+    
 
     useEffect(() => {
 
@@ -110,7 +123,7 @@ const Home_Content = () => {
                 </div>
             </div>
 
-            <button onClick={() => { setScore(score + 1) }} className="text-3xl font-bold absolute border-4 border-dashed border-[var(--burnt-peach)] w-[80vw] right-0 h-[90vh] top-[5vh] right-[3vw] rounded-xl flex flex-col items-center justify-center gap-4">
+            <button onClick={() => { setScore(score + multiplier) }} className="text-3xl font-bold absolute border-4 border-dashed border-[var(--burnt-peach)] w-[80vw] right-0 h-[90vh] top-[5vh] right-[3vw] rounded-xl flex flex-col items-center justify-center gap-4">
                 <h1>Click Here</h1>
             </button>
         </div>
