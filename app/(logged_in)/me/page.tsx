@@ -24,7 +24,7 @@ const MeContent = () => {
         }
 
         fetchData();
-        
+
     }, [])
 
 
@@ -32,7 +32,7 @@ const MeContent = () => {
 
     return (
         <>
-            <div className='animate-slide-down flex items-center justify-start m-2'>
+            <div className='animate-slide-down flex items-center h-screen overflow-y-hidden justify-center m-2'>
                 <div>
                     <Image src={pfp_link || "https://cdn.hackclub.com/01a17348-fd44-7557-9e09-f3e837b2f0ab/Portrait_Placeholder.png"} alt="Profile Picture" width={258} height={258} className="rounded-xl left-3 top-3" />
                     <InputImage />

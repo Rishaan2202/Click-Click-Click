@@ -1,5 +1,6 @@
 import { leaderboard_data } from "./leaderboard_data";
 import { connection } from "next/server";
+import Link from "next/link";
 
 const LeaderboardContent = async () => {
 
@@ -29,6 +30,10 @@ const LeaderboardContent = async () => {
                         <option className="rounded-xl" value="local">Hours</option>
                     </select>
                 </div>
+                <Link href="/home" className="bg-[var(--twilight-indigo)] w-fit rounded-xl p-2 m-2 text-[var(--eggshell)] text-center hover:scale-[1.1] transition-transform duration-200 ease-in-out">
+                Back to Home
+                </Link>             
+                
             </div>
             <div className="transition-transform duration-200 ease-in-out fixed hover:scale-[1.1] flex flex-col justify-center items-center gap-2 top-[3vw] right-[10vw]">
                 <img src={values[0].pfp} className="w-[15vw] right-10 rounded-xl"></img>
