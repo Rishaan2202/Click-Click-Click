@@ -17,8 +17,6 @@ export const BarGraph = ({data, styling}: Props) => {
 
     const chartRef = useRef<HTMLCanvasElement | null>(null)
 
-    const chart_data = data
-
     useEffect(() => {
 
         if (!chartRef.current) return
@@ -33,7 +31,7 @@ export const BarGraph = ({data, styling}: Props) => {
                         label: 'Value',
                         data: data.map(item => item.value),
                         backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderColor: 'black',
                         borderWidth: 1
                     }]
                 },
