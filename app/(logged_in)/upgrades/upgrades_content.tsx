@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { SyncUpgrades } from "./sync_upgrades"
 import handleBuyUpgrade from "./handle_purchase"
 import { useRouter } from "next/navigation"
 
@@ -8,16 +9,42 @@ const UpgradeContent = () => {
 
     const router = useRouter();
 
-    const [auto_clicker_level, setAuto_clicker_level] = useState(1)
-    const [auto_clicker_price, setAuto_clicker_price] = useState(20)
+    const [upgrades, setUpgrades] = useState<any>(null);
+
+    const fetchUpgrades = async () => {
+
+        const data = await SyncUpgrades();
+
+        console.log("Fetched upgrades:", data);
+
+        setUpgrades(data);
+
+        let auto_clicker = data?.find((u: { name: string; level: number }) => u.name === "Auto-Clicker") ?? 0;
+        setAuto_clicker_level(auto_clicker?.level);
+    }
+
+    useEffect(() => {
+        fetchUpgrades();
+    }, [])
+
+    
+    
+    const [auto_clicker_level, setAuto_clicker_level] = useState(0)
+    const [auto_clicker_price, setAuto_clicker_price] = useState(auto_clicker_level === 0 ? 20 : (auto_clicker_level * 100) + 20)
     const [multiplier_level, setMultipler_level] = useState(1)
     const [multiplier_price, setMultipler_price] = useState(100)
     const [placeholder_1_level, setPlaceholder_1_level] = useState(1)
     const [placeholder_2_level, setPlaceholder_2_level] = useState(1)
     const [placeholder_3_level, setPlaceholder_3_level] = useState(1)
     const [placeholder_4_level, setPlaceholder_4_level] = useState(1)
-
+    
     const [pending, setPending] = useState(false)
+    
+    useEffect(() => {
+
+        setAuto_clicker_price(auto_clicker_level === 0 ? 20 : (auto_clicker_level * 100) + 20);
+      
+    }, [auto_clicker_level])
 
     const handlePurchase = (upgradeName: string, upgradeLevel: number, upgradeCost: number) => {
 
@@ -25,10 +52,10 @@ const UpgradeContent = () => {
 
         if (upgradeName === "Auto-Clicker") {
             setAuto_clicker_level(upgradeLevel + 1);
-            setAuto_clicker_price((auto_clicker_price * 10) + auto_clicker_price);
+            setAuto_clicker_price((auto_clicker_level * 100) + 20);
         } else if (upgradeName === "Multiplier") {
             setMultipler_level(upgradeLevel + 1);
-            setMultipler_price((multiplier_price * 10) + multiplier_price);
+            setMultipler_price((multiplier_level * 15) + 30);
         } else if (upgradeName === "Placeholder 1") {
             setPlaceholder_1_level(upgradeLevel + 1);
         } else if (upgradeName === "Placeholder 2") {

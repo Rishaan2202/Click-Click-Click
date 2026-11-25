@@ -10,7 +10,6 @@
   --animate-slide-up: up 1s ease-in-out;
   --animate-slide-down: slide-down 1s ease-in-out;
   --slidebar-slide: sidebar-slide 1s ease-in-out;
-  --animate-error-vanish: error-vanish transition-opacity 1.5s ease-in-out;
 
   @keyframes up {
     0% {
