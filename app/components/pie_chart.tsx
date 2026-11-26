@@ -26,9 +26,9 @@ export const PieChart = ({ data, styling }: Props) => {
                         label: 'Users',
                         data: data.map(item => item),
                         backgroundColor: [
-                            'rgb(255, 99, 132)',
-                            'rgb(54, 162, 235)',
-                            'rgb(255, 205, 86)'
+                            '#81B29A',
+                            '#E07A5F',
+                            '#3D405B'
                         ],
                         borderColor: 'black',
                         borderWidth: 1

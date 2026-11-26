@@ -5,6 +5,7 @@ import { useRef, useEffect } from 'react'
 
 type BarGraphProps = {
     year: number;
+    month: string;
     value: number;
 }
 
@@ -26,12 +27,12 @@ export const BarGraph = ({data, styling}: Props) => {
             {
                 type: 'bar',
                 data: {
-                    labels: data.map(item => item.year),
+                    labels: data.map(item => item.month),
                     datasets: [{
-                        label: 'Value',
+                        label: 'Users Joined',
                         data: data.map(item => item.value),
-                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                        borderColor: 'black',
+                        backgroundColor: '#81B29A',
+                        borderColor: '#000',
                         borderWidth: 1
                     }]
                 },
