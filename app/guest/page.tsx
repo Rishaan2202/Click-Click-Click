@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 
 import mascot from '@/assets/mascot.png'
@@ -14,6 +14,8 @@ export default function Guest() {
 
     const [name, setName] = useState("")
     const [error, setError] = useState([] as { state: boolean, message: string, id: number, start_fade: boolean }[])
+
+    const [is_logging_in, setIs_logging_in] = useState(false)
 
     useEffect(() => {
 
@@ -35,6 +37,9 @@ export default function Guest() {
     const router = useRouter()
 
     const handleLogin = async () => {
+
+        setIs_logging_in(true)
+
         const id = crypto.getRandomValues(new Uint32Array(1))[0]
 
         if (name.trim() === "") {
@@ -79,7 +84,7 @@ export default function Guest() {
 
                                         className=" w-[32vw] border border-gray-300 rounded px-2 py-1" />
 
-                                    <button onClick={handleLogin} className="transition-transform duration-200 ease-in-out bg-[var(--twilight-indigo)] hover:scale-[1.1] hover:cursor-pointer w-[10vw] text-white font-bold py-2 px-4 rounded" >
+                                    <button disabled={is_logging_in} onClick={handleLogin} className="transition-transform duration-200 ease-in-out bg-[var(--twilight-indigo)] hover:scale-[1.1] hover:cursor-pointer w-[10vw] text-white font-bold py-2 px-4 rounded" >
                                         Next
                                     </button>
                                 </div>

@@ -29,7 +29,7 @@ export const LineGraph = ({ data, styling }: Props) => {
                 data: {
                     labels: data.map(item => item.month),
                     datasets: [{
-                        label: 'Users Joined',
+                        label: 'Total Money Earned',
                         data: data.map(item => item.value),
                         backgroundColor: '#81B29A',
                         borderColor: '#000',
